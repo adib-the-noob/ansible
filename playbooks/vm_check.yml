@@ -1,0 +1,11 @@
+- name: VM Check
+  hosts: servers
+
+  tasks:
+    - name: List all Home directories
+      command: ls -ld /home/adib/Desktop/
+      register: home_dirs
+
+    - name: Print Home directories
+      debug:
+        var: home_dirs.stdout_lines

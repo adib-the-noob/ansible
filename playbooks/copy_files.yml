@@ -1,0 +1,7 @@
+- name: Copy files to VM
+  hosts: servers
+  tasks:
+    - name: Copy files
+      copy:
+        src: /home/adib/Desktop/experiment
+        dest: /home/adib/Desktop/

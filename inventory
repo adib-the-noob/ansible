@@ -1,2 +1,5 @@
 [servers]
 192.168.0.175 ansible_user=adib ansible_ssh_pass=hacker
+
+[debian-noob]
+192.168.0.175 ansible_user=noob ansible_ssh_pass=hacker

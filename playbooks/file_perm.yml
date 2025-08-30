@@ -1,0 +1,14 @@
+- name: File Module
+  hosts: debian-noob
+  tasks:
+    - name: creating a file
+      file:
+        path: /tmp/new_noobs_file.txt
+        state: absent # absent > delete, touch > create
+        owner: noob
+        group: noob
+        mode: u=rw,g=rw,o=r
+    - name: Creating a Directory
+      file:
+        path: /tmp/myfolder
+        state: absent

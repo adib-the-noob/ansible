@@ -1,0 +1,19 @@
+- name: Run scripts
+  hosts: debian-noob
+  become: yes
+
+  tasks:
+    - name: Execute shell file
+      shell: ./script_1.sh >> scripts_1.log
+      args:
+        chdir: /tmp/script/
+        creates: /tmp/script/scripts_1.log
+
+    - name: list all the tmp files
+      command: ls /tmp/script/
+      register: tmp_list
+
+    - name: Show ls output
+      debug:
+        var: tmp_list.stdout_lines
+

@@ -1,0 +1,8 @@
+- name: Change Permission
+  hosts: debian-noob
+
+  tasks:
+  - name: change perm 
+    file:
+      path: /tmp/myNewFile.txt
+      mode: u=r,g=rw

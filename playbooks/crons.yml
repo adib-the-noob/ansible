@@ -1,0 +1,12 @@
+- name: Run a Cron
+  hosts: servers
+  become: yes
+
+  tasks:
+    - name: Add cron Job
+      cron:
+        name: Run script in every 30 secs
+        minute: "*/30"
+        hour: "*"
+        user: adib
+        job: "/tmp/script/script_1.sh"

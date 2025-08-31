@@ -1,0 +1,10 @@
+- name: Modify a Cron Job
+  hosts: servers
+  become: yes
+
+  tasks:
+    - name: Remove Cron job
+      cron:
+        name: Run script in every 30 secs
+        state: absent 
+        user: adib

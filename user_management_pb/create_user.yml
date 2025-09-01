@@ -1,0 +1,12 @@
+- name: User management
+  hosts: servers
+  become: yes
+
+  tasks:
+    - name: Create a user
+      user:
+        name: new-adib
+        comment: New user adding
+        shell: /bin/zsh
+        state: absent
+        remove: yes

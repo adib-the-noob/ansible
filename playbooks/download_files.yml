@@ -1,0 +1,19 @@
+- name: Download File
+  hosts: servers
+  tasks:
+    - name: Ensure /tmp/downloaded-files exists
+      file:
+        path: /tmp/downloaded-files
+        state: directory
+        owner: adib
+        group: adib
+        mode: '0755'
+
+    - name: Download a file from a URL
+      get_url:
+        url: https://www.python.org/ftp/python/3.13.7/Python-3.13.7.tar.xz
+        dest: /tmp/downloaded-files/
+        owner: adib
+        group: adib
+        mode: '0755'
+

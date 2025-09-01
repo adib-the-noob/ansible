@@ -1,0 +1,8 @@
+- name: Kill a Process
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Find a process and kill it
+      ignore_errors: yes
+      shell: "preg nginx | xargs kill"

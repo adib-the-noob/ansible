@@ -1,0 +1,14 @@
+- name: Create users through Loop
+  hosts: servers
+  become: yes
+
+  tasks:
+    - name: Create users
+      user:
+        name: "{{ item }}"
+        shell: /bin/bash
+        comment: User {{ item }} adding
+      loop:
+        - Raju
+        - Kaju
+        - Babu

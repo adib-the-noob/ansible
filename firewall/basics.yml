@@ -1,0 +1,33 @@
+- name: Configure firewall for nginx
+  hosts: servers
+  become: yes
+
+  tasks:
+  - name: Install firewalld
+    apt:
+      name: firewalld
+      state: present
+      update_cache: yes
+
+  - name: Start and enable firewalld service
+    systemd:
+      name: firewalld
+      state: started
+      enabled: yes
+
+  - name: Configure firewall for web traffic
+    firewalld:
+      service: "{{ item }}"
+      permanent: true
+      state: enabled
+      immediate: yes  # This applies changes immediately
+    loop:
+      - http
+      - https
+    notify: reload firewalld
+
+  handlers:
+  - name: reload firewalld
+    systemd:
+      name: firewalld
+      state: reloaded
